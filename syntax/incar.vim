@@ -1,6 +1,7 @@
 if exists("b:current_syntax")
-  finish
+    finish
 endif
+
 let b:current_syntax = "incar"
 
 " source
@@ -21,7 +22,7 @@ syntax keyword incarKeyword
  \ NELMIN NFREE NGX NGXF NGY NGYF NGYROMAG NGZ NGZF NKRED NKREDX NKREDY NKREDZ
  \ NLSPLINE NOMEGA NOMEGAR NPACO NPAR NSIM NSUBSYS NSW ODDONLY OMEGAMAX OMEGATL
  \ PFLAT PLEVEL PMASS POTIM PREC PRECFOCK PROUTINE PSUBSYS PTHRESHOLD QUAD_EFG
- \ RANDOM_SEED ROPT RWIGS SAXIS SHAKEMAXITER SHAKETOL SIGMA SMASS SPRING SYMPREC
+ \ RANDOM_SEED ROPT RWIGS SAXIS SHAKEMAXITER SHAKETOL SIGMA SMASS SPRING SYMPREC SYSTEM
  \ TEBEG TEEND TIME TSUBSYS VALUE_MAX VALUE_MIN WC WEIMIN LDMATRIX LORBITALREAL
  \ LNONCOLLINEAR LSORBIT LPARD LSEPB IBAND NELMDL ENCUTGW FTODDUMP
 
@@ -50,11 +51,13 @@ highlight link incarOperator Operator
 """""""""""""""
 "  CONSTANTS  "
 """""""""""""""
-syntax keyword incarConstant Eigenval
-syntax keyword incarConstant C
-syntax keyword incarConstant NONE
+syntax keyword incarConstant 
+ \Eigenval C NONE
+ \Low Medium High Normal Single Accurate
+ \Normal VeryFast Fast
+syntax match incarConstant "High"
 syntax match incarConstant ".TRUE."
 syntax match incarConstant ".FALSE."
-syntax match incarConstant "\v(([0-9]*\.)?[0-9]+E?-?[0-9]*\s?)*$"
+syntax match incarConstant "\v-?(([0-9]*\.)?[0-9]+E?-?[0-9]*\s?)*$"
 
 highlight link incarConstant Constant
